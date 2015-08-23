@@ -1,0 +1,174 @@
+
+package com.hp.ppm.util.ssh;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Collection;
+
+import org.apache.commons.vfs2.FileObject;
+import org.apache.commons.vfs2.FileSystemException;
+import org.apache.commons.vfs2.FileSystemManager;
+import org.apache.commons.vfs2.FileSystemOptions;
+import org.apache.commons.vfs2.NameScope;
+import org.apache.commons.vfs2.VFS;
+import org.apache.commons.vfs2.impl.DefaultFileSystemManager;
+import org.apache.commons.vfs2.provider.sftp.SftpFileSystemConfigBuilder;
+import org.junit.Test;
+import org.apache.commons.io.FileUtils;
+
+import com.hp.ppm.js.SysAdmin;
+import com.hp.ppm.util.ssh.SSHUtils;
+import com.hp.ppm.util.log.Logger;
+
+public class TestSSHClient {
+    @Test
+    public void testCMD() {
+        String cmdStr = "ls -l";
+        InstanceInfo ppmins = new SysAdmin().getPpmInfo();
+        SSHClient sshclient = new SSHClient(ppmins.getServer(), "/", cmdStr);
+        SSHCommandResponse response = sshclient.execute();
+        Logger.info("command=[" + cmdStr + "]");
+        Logger.info("response code=" + response.getExitCode());
+        Logger.info("response string=[" + response.getResponse() + "]");
+    }
+
+    @Test
+    public void testSCPDownload() {
+        try {
+//            SSHUtils.sftpDownload("ppmqavm68", 22, "admin1", "1Qaz2wsx", "/opt/SVN_ROOT/GAP/java/startGAP.bat",
+//                    "C:/Temp/local1/tomcat.log");
+        	SSHUtils.sftpDownload("16.165.216.101", 22, "ppm", "ppm", "/home/ppm/ppm/APM_ROADMAP_UPGRADE1_YG/server/APM_ROADMAP_UPGRADE1_YG/log/",
+                  "C:/Temp/");
+        } catch (IOException e) {
+
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testSCPUpload() {
+        try {
+//            SSHUtils.sftpUpload("ppmqavm68", 22, "admin1", "1Qaz2wsx", "/home/admin1/gap.log",
+//                    "C:/Users/renzhic/gap.log");
+          SSHUtils.sftpDownload("161.65.216.101", 22, "ppm", "ppm", "/home/ppm/ppm/APM_ROADMAP_UPGRADE1_YG/server/APM_ROADMAP_UPGRADE1_YG/log/",
+          "C:/test/");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testVFS() {
+
+        FileSystemOptions fsOptions = new FileSystemOptions();
+        try {
+            SftpFileSystemConfigBuilder.getInstance().setStrictHostKeyChecking(fsOptions, "no");
+        } catch (FileSystemException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        /*
+         * Using the following line will cause VFS to choose File System's Root
+         * as VFS's root. If I wanted to use User's home as VFS's root then I
+         * had to set 2nd method parameter to "true"
+         */
+        SftpFileSystemConfigBuilder.getInstance().setUserDirIsRoot(fsOptions, false);
+        FileSystemManager fsManager;
+        try {
+            fsManager = VFS.getManager();
+            //String uri = "sftp://admin1:1Qaz2wsx@ppmqavm68/";
+            String uri = "sftp://ppm:ppm@16.165.216.101/";
+            FileObject fo = fsManager.resolveFile(uri, fsOptions);
+
+            FileObject tomcatFile = null;
+
+            tomcatFile = fo.resolveFile("/opt/SVN_ROOT/GAP/java/restart_tomcat.sh", NameScope.DESCENDENT_OR_SELF);
+
+            // List content of folder
+            if (tomcatFile.isReadable()) {
+                Logger.info("Tomcat is readable...");
+                FileObject localFile = fsManager.resolveFile("C:/Temp/local/");
+                // FileObject[] children = appFolder.getChildren();
+                // for (int i = 0; i < children.length; i++) {
+                // Logger.info(children[i].getName().getBaseName());
+                // }
+                tomcatFile.moveTo(localFile);
+            }
+
+            fo.close();
+            ((DefaultFileSystemManager)fsManager).close();
+
+        } catch (FileSystemException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void testPPMsFTP() {
+        InstanceInfo iiFrom = new InstanceInfo();
+        SSHCredential sshcFrom = new SSHCredential();
+        sshcFrom.host = "16.186.78.224";
+        sshcFrom.port = 22;
+        sshcFrom.username = "admin";
+        sshcFrom.password = "1Qaz2wsx";
+        iiFrom.setServer(sshcFrom);
+        String fromFile = "/home/admin/license.conf";
+
+        InstanceInfo iiTo = new InstanceInfo();
+        SSHCredential sshcTo = new SSHCredential();
+        sshcTo.host = "ppmqavm68";
+        sshcTo.port = 22;
+        sshcTo.username = "admin1";
+        sshcTo.password = "1Qaz2wsx";
+        iiTo.setServer(sshcTo);
+        String toFile = "/tmp/license.conf";
+
+        PPMsFTP ppmsFtp = new PPMsFTP(iiFrom, iiTo, fromFile, toFile);
+        ppmsFtp.FTPMove();
+    }
+    
+    @Test
+    public void testGetLog()
+    {
+    	SysAdmin sa = new SysAdmin();
+    	InstanceInfo ii = sa.getPpmInfo();
+    	String logDir = ii.getBaseDir() + "/server/" + ii.getName() + "/log/";
+    	String toDir = "C:/test/";   	
+    	try {
+			SSHUtils.sftpDownload(ii.getServer().host, ii.getServer().port, ii.getServer().username, ii.getServer().password, logDir, toDir);
+			
+			File folder = new File(toDir);
+
+	        if (!(folder.exists() && folder.isDirectory())) {
+	            throw new IllegalArgumentException("Folder is not exist or is not a directory.");
+	        }
+
+	        String[] extension = {"txt"};
+
+	        Collection<File> subFiles = org.apache.commons.io.FileUtils.listFiles(folder, extension, true);
+
+	        Logger.info("aaa");
+	        
+	        Object[] subFileObjs = subFiles.toArray();
+
+	        String[] result = new String[subFiles.size()];
+
+	        for (int i = 0; i < subFileObjs.length; i++) {
+	            File f = (File)subFileObjs[i];
+	            result[i] = f.getAbsolutePath();
+	            String content = FileUtils.readFileToString(f, "UTF-8");
+	            boolean isInclude = content.contentEquals("OutOfMemoryException");
+	            Logger.info(result[i]);
+	        }
+	        
+	        Logger.info("bbb");
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+}

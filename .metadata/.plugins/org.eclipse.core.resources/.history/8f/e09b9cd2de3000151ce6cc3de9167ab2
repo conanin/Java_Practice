@@ -1,0 +1,41 @@
+/**
+ * 
+ */
+package com.alf.OOMExample;
+
+/**
+ * @author yinga
+ *
+ */
+public class JavaVMStackOOM {
+
+	private void doNotStop()
+	{
+		while(true)
+		{
+			
+		}
+	}
+	
+	private void stackLeakByThread()
+	{
+		while(true)
+		{
+			Thread thread = new Thread( new Runable(
+					@Override
+					public void run()
+					{
+						
+					}
+					));
+		}
+	}
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

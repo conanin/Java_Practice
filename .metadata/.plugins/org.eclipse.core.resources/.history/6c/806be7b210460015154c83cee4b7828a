@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package com.alf;
+
+/**
+ * @author yinga
+ *
+ */
+public class MethodHandle_Example {
+
+	static class classA
+	{
+		public void println(String s)
+		{
+			System.out.print(s);
+		}
+	}
+	
+	private static MethodHandle getPrintlnHM(Object receiver)
+	{
+		
+	}
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

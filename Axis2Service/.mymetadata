@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Axis2Service2"
+  id="myeclipse.1302788572170"
+  context-root="/Axis2Service2"
+  j2ee-spec="5.0"
+  archive="Axis2Service2.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

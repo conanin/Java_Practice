@@ -1,0 +1,35 @@
+/**
+ * 
+ */
+package com.alf;
+
+import java.lang.reflect.Method;
+
+/**
+ * @author yinga
+ *
+ */
+public class Reflection_Example {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		reflected r = new reflected();
+		Method method;
+		try
+		{
+			method = r.getClass().getMethod("print", Class<?>[0]);
+		}
+		System.out.print(r.getClass().getName());
+	}
+
+}
+
+class reflected
+{
+	public void print()
+	{
+		System.out.println("This is print method in reflected class. \n");
+	}}

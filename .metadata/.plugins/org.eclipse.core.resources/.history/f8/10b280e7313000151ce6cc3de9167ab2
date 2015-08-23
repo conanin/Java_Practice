@@ -1,0 +1,30 @@
+/**
+ * 
+ */
+package com.alf.OOMExample;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author yinga
+ *
+ */
+public class HeapOOM {
+	
+	
+	public static void main(String[] args)
+	{
+		while(true)
+		{
+			List<OOMObject> list = new ArrayList<OOMObject>();
+			list.add(new OOMObject());
+		}	
+	}
+
+}
+
+static class OOMObject()
+{
+	
+}

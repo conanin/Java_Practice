@@ -1,0 +1,18 @@
+/**
+ * 
+ */
+
+
+/**
+ * @author yinga
+ *
+ */
+public class ByteUtils {
+
+	public static int byte2Int(byte[] b, int start, int length )
+	{
+		int sum = 0;
+		int end = start + length;
+	}
+
+}

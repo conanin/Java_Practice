@@ -1,0 +1,24 @@
+/**
+ * 
+ */
+
+/**
+ * @author yinga
+ *
+ */
+public class HotSwapClassLoader extends ClassLoader{
+	
+	public HotSwapClassLoader()
+	{
+		HotSwapClassLoader.class.getClassLoader();
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
