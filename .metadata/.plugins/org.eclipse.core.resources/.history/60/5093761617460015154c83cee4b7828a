@@ -1,0 +1,24 @@
+/**
+ * 
+ */
+package com.alf;
+
+/**
+ * @author yinga
+ *
+ */
+public class InvokeDynamic_Example {
+
+	public static void testMethod(String s)
+	{
+		System.out.println("Dynamic String: \t" + s );;
+	}
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

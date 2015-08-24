@@ -1,0 +1,22 @@
+/**
+ * 
+ */
+
+/**
+ * @author yinga
+ *
+ */
+public class ClassModifier {
+
+	private static final int CONSTANT_POOL_COUNT_INDEX = 8;
+	
+	private static final int CONSTANT_Uft8_info = 1;
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

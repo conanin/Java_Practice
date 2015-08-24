@@ -1,0 +1,43 @@
+/**
+ * 
+ */
+package com.alf;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
+
+/**
+ * @author yinga
+ *
+ */
+public class DynamicProxy_Example {
+
+	interface IHello{
+		void sayHello();
+	}
+	
+	static class Hello implements IHello{
+		public void sayHello()
+		{
+			System.out.println("Hello, World");
+		}
+	}
+	
+	static class DynamicProxy implements InvocationHandler{
+		Object originalObj;
+		Object bind(Object originalObj)
+		{
+			this.originalObj = original;
+			return Proxy.newProxyInstance(originalObj.getClass().getClassLoader(), originalObj.getClass().getInterfaces(), this);
+		}
+		
+	}
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

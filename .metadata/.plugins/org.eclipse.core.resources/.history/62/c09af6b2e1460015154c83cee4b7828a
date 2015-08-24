@@ -1,0 +1,34 @@
+/**
+ * 
+ */
+package com.alf;
+
+/**
+ * @author yinga
+ *
+ */
+public class DynamicProxy_Example {
+
+	interface IHello{
+		void sayHello();
+	}
+	
+	static class Hello implements IHello{
+		public void sayHello()
+		{
+			System.out.println("Hello, World");
+		}
+	}
+	
+	static class DynamicProxy implements InvocationHandler{
+		
+	}
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

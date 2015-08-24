@@ -1,0 +1,12 @@
+<service name="AxisService">
+	<description>AxisService</description>
+	<parameter name="ServiceClass">ws.TestWs</parameter>
+	<operation name="showName">
+		<messageReceiver
+			class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+	</operation>
+	<operation name="getName">
+		<messageReceiver
+			class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver" />
+	</operation>
+</service>

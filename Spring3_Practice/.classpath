@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="E:/Workspace/Spring3_Practice/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="E:/Workspace/Spring3_Practice/lib/spring-aop-3.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/Workspace/Spring3_Practice/lib/spring-aspects-3.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/Workspace/Spring3_Practice/lib/spring-beans-3.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/Workspace/Spring3_Practice/lib/spring-context-3.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/Workspace/Spring3_Practice/lib/spring-context-support-3.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/Workspace/Spring3_Practice/lib/spring-core-3.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/Workspace/Spring3_Practice/lib/spring-expression-3.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/3Party_Tools_Lib/spring-framework-3.2.9.RELEASE/libs/spring-web-3.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/3Party_Tools_Lib/spring-framework-3.2.9.RELEASE/libs/spring-webmvc-portlet-3.2.9.RELEASE.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

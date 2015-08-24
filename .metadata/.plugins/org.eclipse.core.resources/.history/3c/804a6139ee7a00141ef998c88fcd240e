@@ -1,0 +1,40 @@
+/**
+ * 
+ */
+package com.alf.str;
+
+import org.junit.Test;
+
+/**
+ * @author yinga
+ *
+ */
+public class testBasicString {
+
+	
+	@Test
+	public void testT1(){
+		String a = "a" + "b" + 1;
+		String b = "ab1";
+		System.out.println( a == b);
+	}
+	
+	private static String getA(){ return "A";}
+	
+	
+	@Test
+	public void testT2(){
+		String a = "a" + "b" + 1;
+		String b = "ab1";
+		System.out.println( a == b);
+	}
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+

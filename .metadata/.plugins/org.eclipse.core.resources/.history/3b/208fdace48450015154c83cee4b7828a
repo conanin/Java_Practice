@@ -1,0 +1,44 @@
+/**
+ * 
+ */
+package com.alf;
+
+/**
+ * @author yinga
+ *
+ */
+public class DynamicDispatch {
+	
+	static abstract class Human{}
+
+	static class Man extends Human{}
+	
+	static class Woman extends Human{}
+	
+	public void sayHello(Human guy)
+	{
+		System.out.println("Hello, human");
+	}
+	
+	public void sayHello(Man guy)
+	{
+		System.out.println("Hello, man");
+	}
+	
+	public void sayHello(Woman guy)
+	{
+		System.out.println("Hello, woman");
+	}
+	
+	Human man = new man();
+	Human woman = new woman();
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
