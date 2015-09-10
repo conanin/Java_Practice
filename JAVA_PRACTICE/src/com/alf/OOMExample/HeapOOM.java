@@ -1,15 +1,8 @@
-/**
- * 
- */
 package com.alf.OOMExample;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author yinga
- *
- */
 public class HeapOOM {
 
 	static class OOMObject
