@@ -1,11 +1,3 @@
-/**
- * 
- */
-
-/**
- * @author yinga
- *
- */
 public class ClassModifier {
 
 	private static final int CONSTANT_POOL_COUNT_INDEX = 8;
@@ -25,21 +17,19 @@ public class ClassModifier {
 		this.classByte = classByte;
 	}
 	
-	public byte[] modifyUTF8Constant(String oldStr, String newStr)
-	{
-		int cpc = get
-	}
-	
-	public int getConstantPoolCount()
-	{
-		return ByteUtils.
-	}
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+//	public byte[] modifyUTF8Constant(String oldStr, String newStr)
+//	{
+//		int cpc = get
+//	}
+//	
+//	public int getConstantPoolCount()
+//	{
+//		return ByteUtils.
+//	}
 
+	public static void main(String[] args) 
+	{
+		
 	}
 
 }
