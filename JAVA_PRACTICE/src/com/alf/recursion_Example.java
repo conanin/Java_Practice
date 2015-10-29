@@ -1,6 +1,8 @@
 package com.alf;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.junit.Test;
 
@@ -41,6 +43,12 @@ public class recursion_Example {
 		}
 		
 		level ++;
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		sdf.format( new Date() );
 	}
+	
+	
+	
 
 }
