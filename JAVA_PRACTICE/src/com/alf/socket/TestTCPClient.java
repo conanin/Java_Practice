@@ -19,7 +19,7 @@ public class TestTCPClient {
 		PrintWriter pw = null;
 		BufferedReader cbr = null;
 		BufferedReader sbr = null;
-		String readline = "";
+		String readline;
 		
 		try 
 		{
@@ -29,20 +29,30 @@ public class TestTCPClient {
 			os = socket.getOutputStream();
 			dis = new DataInputStream( is );
 			dos = new DataOutputStream( os );
-			dos.writeUTF( "Hello, Server" );
 			pw = new PrintWriter( os );
 			cbr = new BufferedReader( new InputStreamReader( System.in));
 			sbr = new BufferedReader( new InputStreamReader( is ));
 			readline = cbr.readLine();
-			
-			while( readline != null )
+			/*
+			dos.writeUTF( "From Client: Hello, Server" );
+			System.out.println( dis.readUTF() );
+			*/
+			while( !readline.equals("bye") )
 			{
 				pw.println( readline );
 				pw.flush();
-				System.out.println( "Client: " + readline );
-				System.out.println( "Server: " + sbr.readLine());
-				readline = sbr.readLine();
-				pw.write( "Nice to meet you!" );
+				System.out.println( "Client Message:\t" + readline );
+				System.out.println( "Server Message:\t" + sbr.readLine());
+				readline = cbr.readLine();
+			}	
+			
+			if( readline.equals("bye"))
+			{
+				pw.println( readline );
+				pw.println( "The client will be closed." );
+				pw.flush();
+				System.out.println( "Client Message:\t" + readline );
+				socket.close();
 			}
 		} 
 		catch (IOException e) 

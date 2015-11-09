@@ -15,36 +15,43 @@ public class TestTCPServer {
 		Socket socket = null;
 		InputStream is = null;
 		DataInputStream dis = null;
-		//DataInputStream consoledis = null;
 		OutputStream os = null;
 		DataOutputStream dos = null;
 		PrintWriter pw = null;
 		BufferedReader cbr = null;
 		BufferedReader sbr = null;
-		String readline = "";
+		String line = null;
 		try 
 		{
 			ss = new ServerSocket( 18888 );
 			System.out.println(  "Waiting client send message..." );
 			socket = ss.accept();
-			socket = new Socket( "127.0.0.1", 18888);
-			System.out.println( "Try to connect to server." );
+			System.out.println(  "A client is connected." );
 			is = socket.getInputStream();
 			os = socket.getOutputStream();
 			dis = new DataInputStream( is );
 			dos = new DataOutputStream( os );
-			dos.writeUTF( "Hello, Server" );
 			pw = new PrintWriter( os );
 			cbr = new BufferedReader( new InputStreamReader( System.in));
 			sbr = new BufferedReader( new InputStreamReader( is ));
-			readline = cbr.readLine();
+			System.out.println( "Client Message:\t" + sbr.readLine() );
+			line = cbr.readLine();
 			
-			while( readline != null )
+			while( !line.equals("bye") )
 			{
-				System.out.println( socket.getLocalAddress() );
-				System.out.println( "Client message:\t" + readline );
+				pw.println( line );
+				pw.flush();
+				System.out.println( "Server Message:\t" + line );
+				System.out.println( "Client Message:\t" + sbr.readLine() );
+				line = cbr.readLine();
 			}
-			dos.writeUTF( "Hello, Client! " );
+			
+			/*
+			System.out.println( dis.readUTF() );
+			System.out.println( "Server Message: IP of client:\t" + socket.getInetAddress() );		
+			dos.writeUTF( "From Server: Hello, Client! " );	
+			*/
+			
 		} 
 		catch (IOException e) 
 		{
