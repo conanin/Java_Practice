@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  */
 public class JDBC_Example {
-	private static String url = "jdbc:oracle:thin:@16.157.132.48:1521:SHQA11R2";
+	private static String url = "jdbc:oracle:thin:@16.155.192.208:1521:SHQA11R2";
 	private static String user = "PPM_931_SHARON_TEMP";
 	private static String password = "PPM_931_SHARON_TEMP";    
 	public static Connection conn;    
@@ -25,11 +25,19 @@ public class JDBC_Example {
 	
 	public static Connection getConnection(){    
 		conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
 		try {    
 				//Step1: initialize driver class.     
 				Class.forName("oracle.jdbc.driver.OracleDriver");    
 				//Step2: Setup DB connection     
 				conn = DriverManager.getConnection(url, user, password);
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery( "select * from knta_users where rownum < 4" );
+				while( rs.next() )
+				{
+					System.out.println( rs.getString( "USERNAME" ));
+				}
 				if( conn == null )
 				{    
 					System.out.println( "Cannot connect to database.");    
@@ -92,9 +100,29 @@ public class JDBC_Example {
 			System.out.println("²åÈëÊý¾ÝÊ§°Ü" + e.getMessage());    
 		}     
 		finally{
-			//Step 5: Close connection to database.
-			conn.close(); 
-		}
+            try
+            {
+            	if( rs != null )
+                {
+                	rs.close();
+                	rs = null;
+                }
+            	if( st != null )
+            	{
+            		st.close();
+            		st = null;
+            	}
+            	if( conn != null )
+            	{
+            		conn.close();
+            		conn = null;
+            	}
+            }
+        	catch( SQLException e )
+            {
+        		e.printStackTrace();
+            }
+        }
    }    
    
 	
@@ -128,10 +156,30 @@ public class JDBC_Example {
 			System.out.println("Failed to update data");
 			e.printStackTrace();
 		}
-		finally
-		{
-			conn.close();
-		}
+		finally{
+            try
+            {
+            	if( rs != null )
+                {
+                	rs.close();
+                	rs = null;
+                }
+            	if( st != null )
+            	{
+            		st.close();
+            		st = null;
+            	}
+            	if( conn != null )
+            	{
+            		conn.close();
+            		conn = null;
+            	}
+            }
+        	catch( SQLException e )
+            {
+        		e.printStackTrace();
+            }
+        }
 	}
 	
 	public static void main(String args[]) throws SQLException
@@ -145,7 +193,7 @@ public class JDBC_Example {
 		while(it.hasNext())
 		{
 			Employee emp = it.next();
-			System.out.println(emp.getUserId() + "\t" + emp.getUserName() + "\t" + emp.getAlias());
+			System.out.println(emp.getUserId() + "\t" + emp.getUserName() + "\t");
 			//System.out.println(it.next().getUserName());
 		}
 		/*
@@ -164,7 +212,7 @@ public class JDBC_Example {
 	
 	public List<Employee> queryUser() throws SQLException{
         List<Employee> list = new ArrayList<Employee>();
-        String sql="select * from employee";
+        String sql="select * from knta_users where rownum < 4";
         conn = getConnection();
         try {
               /*
@@ -178,15 +226,36 @@ public class JDBC_Example {
               while( rs.next() )
               {
             	  Employee employee = new Employee();
-            	  employee.setUserName(rs.getString("USER_NAME"));
+            	  employee.setUserName(rs.getString("USERNAME"));
             	  employee.setUserId(rs.getLong("USER_ID"));
-            	  employee.setAlias(rs.getString("ALIAS"));
+            	  //employee.setAlias(rs.getString("ALIAS"));
             	  list.add(employee);
             }
        } catch (SQLException e) {
            e.printStackTrace();
        }finally{
-           conn.close();
+           try
+           {
+           	if( rs != null )
+               {
+               	rs.close();
+               	rs = null;
+               }
+           	if( st != null )
+           	{
+           		st.close();
+           		st = null;
+           	}
+           	if( conn != null )
+           	{
+           		conn.close();
+           		conn = null;
+           	}
+           }
+       	catch( SQLException e )
+           {
+       		e.printStackTrace();
+           }
        }
        
         return list;
@@ -212,7 +281,28 @@ public class JDBC_Example {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }finally{
-            conn.close();
+            try
+            {
+            	if( rs != null )
+                {
+                	rs.close();
+                	rs = null;
+                }
+            	if( st != null )
+            	{
+            		st.close();
+            		st = null;
+            	}
+            	if( conn != null )
+            	{
+            		conn.close();
+            		conn = null;
+            	}
+            }
+        	catch( SQLException e )
+            {
+        		e.printStackTrace();
+            }
         }
         
         return flag;
