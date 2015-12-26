@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+   <book email="conanin@live.cn">
+     <name>Fringe</name>
+     <price>60.0</price>
+  </book>
+  <book email="conanin.yin@gmail.com">
+     <name>Fringe</name>
+     <price>80.0</price>
+  </book>
+</books>

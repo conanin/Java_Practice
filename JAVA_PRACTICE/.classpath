@@ -8,5 +8,7 @@
 	<classpathentry kind="lib" path="C:/Private/Eclipse_Workspace/Java_Practice/JAVA_PRACTICE/lib/mailapi.jar"/>
 	<classpathentry kind="lib" path="C:/Private/Eclipse_Workspace/Java_Practice/JAVA_PRACTICE/lib/ojdbc14.jar"/>
 	<classpathentry kind="lib" path="C:/Private/Eclipse_Workspace/Java_Practice/JAVA_PRACTICE/lib/smtp.jar"/>
+	<classpathentry kind="lib" path="C:/Private/Eclipse_Workspace/Java_Practice/JAVA_PRACTICE/lib/jdom-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Private/Eclipse_Workspace/Java_Practice/JAVA_PRACTICE/lib/jdom-2.0.6-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

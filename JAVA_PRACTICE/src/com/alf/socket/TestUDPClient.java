@@ -10,7 +10,7 @@ import java.io.*;
 * @Creation date£º Nov 10, 2015 9:26:32 AM 
 */
 public class TestUDPClient {
-	public static void main( String[] args )
+	public static void main ( String[] args ) throws Exception
 	{
 		int count = ( int )(Math.random() * 1000);
 		System.out.println( "Count: " + count );

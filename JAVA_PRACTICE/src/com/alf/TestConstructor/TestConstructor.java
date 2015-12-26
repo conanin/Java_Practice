@@ -15,7 +15,8 @@ package com.alf.TestConstructor;
 public class TestConstructor {
 	public static void main( String[] args )
 	{
-		superSuperClass ssc = new subClass();
+		SuperSuperClass ssc = new SubClass();
 		//superSuperClass ssc = new subClass( 300 );
 	}
+	
 }

@@ -3,9 +3,9 @@ package com.alf.TestConstructor;
 * @author: conanin
   @E-mail: conanin@live.cn
 * @version:  
-* @Creation date： Oct 8, 2015 1:45:43 PM 
+* @Creation date锛�Oct 8, 2015 1:45:43 PM 
 */
-public class subClass extends superClass {
+public class SubClass extends SuperClass {
 	protected int count;
 	
 	public String baseName = "subClass";

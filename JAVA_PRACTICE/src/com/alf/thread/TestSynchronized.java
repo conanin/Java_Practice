@@ -25,10 +25,10 @@ public class TestSynchronized implements Runnable {
 		synchronized( this )	// synchronized for instance of the class.
 		{
 			System.out.println( "m1: b = \t" + b );
-			System.out.println( "m1: " + ( new Date() ).toInstant());
+//			System.out.println( "m1: " + ( new Date() ).toInstant());
 			b = 2000;
 			System.out.println( "m1: b = \t" + b );
-			System.out.println( "m1: " + ( new Date() ).toInstant());
+//			System.out.println( "m1: " + ( new Date() ).toInstant());
 			try 
 			{
 				Thread.sleep(5000);
@@ -38,7 +38,7 @@ public class TestSynchronized implements Runnable {
 				e.printStackTrace();
 			}
 			System.out.println( "m1: b = \t" + b );
-			System.out.println( "m1: " + ( new Date() ).toInstant());
+//			System.out.println( "m1: " + ( new Date() ).toInstant());
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class TestSynchronized implements Runnable {
 		//synchronized( TestSynchronized.class )	synchronized for the entire class.
 		synchronized( this )  // synchronized for instance of the class.
 		{
-			System.out.println( "m2: " + ( new Date() ).toInstant() );
+//			System.out.println( "m2: " + ( new Date() ).toInstant() );
 			System.out.println( "m2: b = \t" + b );
 			try {
 				Thread.sleep(2500);
@@ -56,7 +56,7 @@ public class TestSynchronized implements Runnable {
 			}
 			b = 4000;
 			System.out.println( "m2: b = \t" + b );
-			System.out.println( "m2: " + ( new Date() ).toInstant() );
+//			System.out.println( "m2: " + ( new Date() ).toInstant() );
 		}
 	}
 
