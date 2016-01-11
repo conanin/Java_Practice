@@ -3,6 +3,7 @@ package com.alf.sortalgorithm;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -39,16 +40,22 @@ public class InsertionSortTest {
 	public void testDirectInsertionSort() {
 		int[] arr = new int[]{5,7,3,6};
 		InsertionSort.DirectInsertionSort(arr);
+		System.out.println(Arrays.toString(arr));
 	}
 	
 	@Test
 	public void testbinaryInsertSort()
 	{
-		int[] arr = new int[]{5,7,3,6};
+		int[] arr = new int[]{5,7,3,6,2};
 		InsertionSort.binaryInsertSort(arr);
-		
-		List<String> lists = new ArrayList<String>();
-		Collections.sort(lists);
+		System.out.println(Arrays.toString(arr));
 	}
 
+	@Test
+	public void testShellSort()
+	{
+		int[] arr = new int[]{5,7,3,6,2};
+		InsertionSort.shellSort(arr);
+		System.out.println(Arrays.toString(arr));
+	}
 }
