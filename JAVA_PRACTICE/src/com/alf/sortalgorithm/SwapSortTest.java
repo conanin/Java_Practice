@@ -19,9 +19,9 @@ public class SwapSortTest {
 	@Test
 	public void testBubbleSort() {
 		int[] arr = { 5,7,3,6,2 };
-		new SwapSort().BubbleSort(arr);
+		int[] b = new SwapSort().BubbleSort1(arr,arr.length);
 		//assertArrayEquals((2,3,5,6,7), new ExchangeSort().BubbleSort(arr));
-		System.out.println( Arrays.toString( arr ));
+		System.out.println( Arrays.toString( b ));
 	}
 	
 	@Test

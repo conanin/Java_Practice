@@ -2,3 +2,4 @@ eclipse.preferences.version=1
 encoding//src/com/alf/AnnotationExample/CustomizedAnnotation.java=UTF-8
 encoding//src/com/alf/TestConstructor/SuperSuperClass.java=UTF-8
 encoding//src/com/alf/thread/SynchronizedDemo.java=UTF-8
+encoding//src/com/alf/thread/concurrent/Actor.java=UTF-8

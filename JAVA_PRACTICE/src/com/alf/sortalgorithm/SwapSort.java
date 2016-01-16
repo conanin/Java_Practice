@@ -58,6 +58,25 @@ public class SwapSort {
 		return arr;
 	}
 	
+	//冒泡排序1
+	int[] BubbleSort1(int a[], int n)
+	{
+	       int i, j;
+	       for (i = 0; i < n; i++)
+	              for (j = 1; j < n - i; j++)
+	                     if (a[j - 1] > a[j])
+	                            Swap(a[j - 1], a[j]);
+	       
+	       return a;
+	}
+
+	public void Swap( int i, int j )
+	{
+		int temp = i;
+		i = j;
+		j = temp;
+	}
+	
 	static int[] quicksort(int arr[], int left, int right) {
 
         int dp;
